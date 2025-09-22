@@ -1,0 +1,1 @@
+# Directory renamed from pages to page
