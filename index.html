@@ -273,8 +273,10 @@ The Task Force is appealing to anyone with information, no matter how insignific
         // --- Clock and Date Functionality ---
         function updateGtaTime() {
             const now = new Date();
-            const realTimeInSeconds = now.getHours() * 3600 + now.getMinutes() * 60 + now.getSeconds();
-            const gtaTotalSeconds = realTimeInSeconds * 20;
+            // Use UTC time to ensure consistency for all users regardless of their timezone
+            const realTimeInSeconds = (now.getUTCHours() * 3600) + (now.getUTCMinutes() * 60) + now.getUTCSeconds();
+            // Correct ratio: 1 real second = 30 in-game seconds
+            const gtaTotalSeconds = realTimeInSeconds * 30;
             
             const gtaHours = Math.floor((gtaTotalSeconds / 3600) % 24);
             const gtaMinutes = Math.floor((gtaTotalSeconds % 3600) / 60);
